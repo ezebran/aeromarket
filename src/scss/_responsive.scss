@@ -1,0 +1,56 @@
+@media screen and (max-width: 415px){
+	body{
+		font-size: 14px;
+		header{
+			.h-banner{
+			    height: inherit;
+			    background-size: cover;
+			    background-position: 60%;
+			    background-attachment: inherit;
+			}
+		}
+		.main{
+			.m-bar{
+				@include col-ct;
+				.m-bar-content{
+					width: 100%;
+					.n-products{
+						width: 100%;
+						@include row-bt;
+					}
+					@include col-ct;
+					hr{
+						display: none;
+					}
+					ul{
+						@include col-ct;
+						li{
+							margin: 0.5rem 0;
+						}
+					}
+				}
+			}
+			.articles{
+				padding: 3rem 0;
+				article{
+					width: 100%;
+				    height: inherit;
+				}
+			}
+		}
+	}
+	.arrow-cont{
+		display: none;
+		.arrow-icon{
+
+		}	
+	}
+
+	.arrow-resp{
+		display: inline-block;
+		span{
+			color:$cele;
+			border-color:$cele;
+		}
+	}
+}
