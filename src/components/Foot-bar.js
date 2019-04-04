@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const MainBar = () => {
+const FootBar = () => {
 	return(
 		<div>
 			<div className="m-bar">
@@ -13,23 +13,6 @@ const MainBar = () => {
 						</a>
 					</h2>
 
-					<hr />
-
-					<ul>
-						<li className="p-sort">Sort by:</li>
-
-						<a href="#">
-							<li className="btn btn-active">Most recent</li>
-						</a>
-
-						<a href="#">
-							<li className="btn btn-light">Lowest price</li>
-						</a>
-
-						<a href="#">
-							<li className="btn btn-light">Highest price</li>
-						</a>
-					</ul>
 
 				</div>
 				<a href="#" className="arrow-cont">
@@ -37,9 +20,9 @@ const MainBar = () => {
 				</a>
 			</div>
 
-			<hr className="gray-line" />
+			<hr className="gray-line gl-foot" />
 		</div>
 	)
 }
 
-export default MainBar;
+export default FootBar;

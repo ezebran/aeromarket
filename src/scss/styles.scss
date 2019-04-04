@@ -49,44 +49,47 @@ header{
 	}
 }
 
-.main{
-	padding: 0 2rem;
-	@include col-ct;
-	.m-bar{
+.m-bar{
+	@include row-bt;
+	padding: 2rem;
+	width: 100%;
+	.m-bar-content{
 		@include row-bt;
-		padding: 2rem 0;
-		width: 100%;
-		.m-bar-content{
+		h2{
+			color: $black;
+			font-weight: 400;
+		}
+		hr{
+		    height: 49px;
+		    border-left: none;
+		    border-color:$gray2;
+		    border-top: none;
+		    margin: 0 1.5rem;
+		}
+		ul{
 			@include row-bt;
-			h2{
-				color: $black;
-				font-weight: 400;
+			li{
+				font-size: 1.5rem;
+				margin: 0 0.5rem;
 			}
-			hr{
-			    height: 49px;
-			    border-left: none;
-			    border-color:$gray2;
-			    border-top: none;
-			    margin: 0 1.5rem;
-			}
-			ul{
-				@include row-bt;
-				li{
-					font-size: 1.5rem;
-					margin: 0 0.5rem;
-				}
-				.p-sort{
-					color:$gray;					
-				}
+			.p-sort{
+				color:$gray;					
 			}
 		}
 	}
-	.gray-line{
-	    width: 100%;
-	    border-color: $gray2;
-	    border-top: none;
-	    border-left: none;
-	}
+}
+.gray-line{
+    width: 100%;
+    border-color: $gray2;
+    border-top: none;
+    border-left: none;
+    width: calc(100% - 4rem);
+    margin: auto;
+}
+
+.main{
+	padding: 0 2rem;
+	@include col-ct;
 }
 
 .articles{
