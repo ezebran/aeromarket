@@ -1,13 +1,15 @@
 import React from 'react';
 
-const MainBar = () => {
+const MainBar = (props) => {
+	let objSize = Object.keys(props.productos).length;
+	console.log(objSize)
 	return(
 		<div>
 			<div className="m-bar">
 
 				<div className="m-bar-content">
 					<h2 className="n-products">
-						16 of 32 products
+						11 of {objSize} products
 						<a href="#" className="arrow-cont arrow-resp">
 							<span className="icon-keyboard_arrow_right arrow-icon"></span>
 						</a>

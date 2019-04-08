@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import MainBar from './components/Main-bar';
 import Articles from './components/Articles';
+import FootBar from './components/Foot-bar';
 
 class App extends Component {
 
@@ -28,7 +29,6 @@ obtenerProductos = async () => {
 			this.setState({
 				productos: productos
 			})
-			console.log(productos[1].name)
 		})	
 }
 
@@ -55,10 +55,13 @@ obtenerUsuario = async () => {
 			<Header 
 				usuarios = {this.state.usuarios}
 			/>
-			<MainBar />
+			<MainBar
+				productos = {this.state.productos}
+			/>
 			<Articles 
 				productos = {this.state.productos}
 			/>
+			<FootBar />
 		</div>
     );
   }

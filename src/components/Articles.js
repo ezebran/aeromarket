@@ -6,7 +6,7 @@ class Articles extends Component {
 		return(
 			<section className="main">
 				<div className="articles">
-					<a href="#">
+					
 						
 							{ Object.keys(this.props.productos).map(key => (
 								<Article
@@ -14,7 +14,7 @@ class Articles extends Component {
 								/>
 							))}
 						
-					</a>
+					
 				</div>
 			</section>
 		)
