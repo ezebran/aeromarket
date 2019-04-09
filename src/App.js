@@ -10,7 +10,8 @@ token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YzlkNmIwNzQ0OTNjMTAwNm
 
 state = {
 	usuarios: {},
-	productos: []
+	productos: [],
+	pagActual: 1
 }
 
 componentDidMount() {
@@ -20,16 +21,27 @@ componentDidMount() {
 
 obtenerProductos = async () => {
 	let url = `https://aerolab-challenge.now.sh/products/?token=${this.token}`;
-
+	let produs = []
+	const artPorPag = 16;
 	await fetch(url)
 		.then(respuesta => {
 			return respuesta.json();
 		})
 		.then(productos => {
+
 			this.setState({
 				productos: productos
 			})
-		})	
+			produs = productos;
+			
+		})
+	let hasta = artPorPag * 1;
+	let desde = hasta - artPorPag;
+	for(let i = 0;i < artPorPag;i++){
+		console.log(desde);
+		desde++
+	}
+	console.log(desde)
 }
 
 obtenerUsuario = async () => {

@@ -2,7 +2,6 @@ import React from 'react';
 
 const MainBar = (props) => {
 	let objSize = Object.keys(props.productos).length;
-	console.log(objSize)
 	return(
 		<div>
 			<div className="m-bar">
