@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MainBar = (props) => {
-	let objSize = Object.keys(props.productos).length;
+	let objSize = props.paginacion.cantidadProdus;
 	return(
 		<div>
 			<div className="m-bar">

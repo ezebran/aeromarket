@@ -11,7 +11,11 @@ token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YzlkNmIwNzQ0OTNjMTAwNm
 state = {
 	usuarios: {},
 	productos: [],
-	pagActual: 1
+	paginacion: {
+		pagActual: 1,
+		productosPorPag: 16,
+		cantidadProdus: 0
+	}
 }
 
 componentDidMount() {
@@ -21,27 +25,37 @@ componentDidMount() {
 
 obtenerProductos = async () => {
 	let url = `https://aerolab-challenge.now.sh/products/?token=${this.token}`;
-	let produs = []
-	const artPorPag = 16;
+	const artPorPag = this.state.paginacion.productosPorPag;
 	await fetch(url)
 		.then(respuesta => {
 			return respuesta.json();
 		})
 		.then(productos => {
 
-			this.setState({
-				productos: productos
-			})
-			produs = productos;
+			var paginacionCopy = this.state.paginacion
+			paginacionCopy.cantidadProdus = productos.length
 			
+			this.setState({
+				paginacion: paginacionCopy,
+				productos: productos				
+			})			
 		})
-	let hasta = artPorPag * 1;
+
+	
+	let hasta = artPorPag * 2;
 	let desde = hasta - artPorPag;
+	var produs = [];
+
 	for(let i = 0;i < artPorPag;i++){
-		console.log(desde);
-		desde++
+		produs.push(this.state.productos[desde]);
+		desde++;
 	}
-	console.log(desde)
+
+	console.log(produs)
+	console.log(this.state.paginacion.cantidadProdus)
+	this.setState({
+		productos: produs
+	})	
 }
 
 obtenerUsuario = async () => {
@@ -68,7 +82,7 @@ obtenerUsuario = async () => {
 				usuarios = {this.state.usuarios}
 			/>
 			<MainBar
-				productos = {this.state.productos}
+				paginacion = {this.state.paginacion}
 			/>
 			<Articles 
 				productos = {this.state.productos}
