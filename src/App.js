@@ -23,7 +23,7 @@ componentDidMount() {
 	this.obtenerProductos();
 }
 
-obtenerProductos = async () => {
+obtenerProductos = async (pagBar) => {
 	let url = `https://aerolab-challenge.now.sh/products/?token=${this.token}`;
 	const artPorPag = this.state.paginacion.productosPorPag;
 	await fetch(url)
@@ -31,9 +31,15 @@ obtenerProductos = async () => {
 			return respuesta.json();
 		})
 		.then(productos => {
-
+			var pagEnMbar;
+			if(pagBar == undefined){
+				pagEnMbar = 1;
+			}else{
+				pagEnMbar = pagBar;
+			}
 			var paginacionCopy = this.state.paginacion
 			paginacionCopy.cantidadProdus = productos.length
+			paginacionCopy.pagActual = pagEnMbar
 			
 			this.setState({
 				paginacion: paginacionCopy,
@@ -41,8 +47,8 @@ obtenerProductos = async () => {
 			})			
 		})
 
-	
-	let hasta = artPorPag * 2;
+
+	let hasta = artPorPag * this.state.paginacion.pagActual;
 	let desde = hasta - artPorPag;
 	var produs = [];
 
@@ -51,11 +57,11 @@ obtenerProductos = async () => {
 		desde++;
 	}
 
-	console.log(produs)
-	console.log(this.state.paginacion.cantidadProdus)
+	
 	this.setState({
 		productos: produs
 	})	
+	// console.log(pagEnMbar)
 }
 
 obtenerUsuario = async () => {
@@ -83,11 +89,14 @@ obtenerUsuario = async () => {
 			/>
 			<MainBar
 				paginacion = {this.state.paginacion}
+				obtenerProductos = {this.obtenerProductos}
 			/>
 			<Articles 
 				productos = {this.state.productos}
 			/>
-			<FootBar />
+			<FootBar
+				paginacion = {this.state.paginacion}
+			/>
 		</div>
     );
   }

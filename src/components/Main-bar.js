@@ -2,13 +2,39 @@ import React from 'react';
 
 const MainBar = (props) => {
 	let objSize = props.paginacion.cantidadProdus;
+	let artPosicion = props.paginacion.productosPorPag * props.paginacion.pagActual;
+
+
+	const paginacionBarMas = (e) => {
+		e.preventDefault();
+
+		if(objSize != artPosicion){
+			var pagEnBar = props.paginacion.pagActual + 1;
+
+			props.obtenerProductos(pagEnBar);		
+		}else{
+			document.getElementsByClassName("icon-keyboard_arrow_right").setAttribute("class", "coso");
+		}
+
+
+
+	}
+
+	const paginacionBarMenos = (e) => {
+		e.preventDefault();
+
+		var pagEnBar = props.paginacion.pagActual - 1;
+
+		props.obtenerProductos(pagEnBar);
+
+	}
 	return(
 		<div>
 			<div className="m-bar">
 
 				<div className="m-bar-content">
 					<h2 className="n-products">
-						11 of {objSize} products
+						{artPosicion} of {objSize} products
 						<a href="#" className="arrow-cont arrow-resp">
 							<span className="icon-keyboard_arrow_right arrow-icon"></span>
 						</a>
@@ -33,7 +59,11 @@ const MainBar = (props) => {
 					</ul>
 
 				</div>
-				<a href="#" className="arrow-cont">
+
+				<a href="#" className="arrow-cont" onClick={paginacionBarMenos}>
+					<span className="icon-keyboard_arrow_left arrow-icon"></span>
+				</a>
+				<a href="#" className="arrow-cont" onClick={paginacionBarMas}>
 					<span className="icon-keyboard_arrow_right arrow-icon"></span>
 				</a>
 			</div>

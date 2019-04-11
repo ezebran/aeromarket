@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 
-const FootBar = () => {
+const FootBar = (props) => {
+	let objSize = props.paginacion.cantidadProdus;
+	let artPosicion = props.paginacion.productosPorPag * props.paginacion.pagActual;
 	return(
 		<div>
 			<div className="m-bar">
 
 				<div className="m-bar-content">
 					<h2 className="n-products">
-						16 of 32 products
+						{artPosicion} of {objSize} products
 						<a href="#" className="arrow-cont arrow-resp">
 							<span className="icon-keyboard_arrow_right arrow-icon"></span>
 						</a>
