@@ -14,13 +14,15 @@ state = {
 	paginacion: {
 		pagActual: 1,
 		productosPorPag: 16,
-		cantidadProdus: 0
+		cantidadProdus: 0,
+		ordenadoPor: 1	//1 = reciente, 2 = porMenor, 3 = porMayor
 	}
 }
 
 componentDidMount() {
 	this.obtenerUsuario();
 	this.obtenerProductos();
+	this.ordenadoPor();
 }
 
 obtenerProductos = async (pagBar) => {
@@ -57,10 +59,35 @@ obtenerProductos = async (pagBar) => {
 		desde++;
 	}
 
-	
+	if(this.state.ordenadoPor == 2){
+
+		produs.sort(function (prev, next){
+			return prev.cost - next.cost;
+		})
+		let botonMenor = document.getElementById('porMenor');
+		botonMenor.classList.remove("btn-light");
+		botonMenor.classList.add("btn-active");
+
+		let botonMayor = document.getElementById('porMayor');
+		botonMayor.classList.remove("btn-active");
+		botonMayor.classList.add("btn-light");
+
+		let botonReciente = document.getElementById('reciente');
+		botonReciente.classList.remove("btn-active");
+		botonReciente.classList.add("btn-light");
+	}
+
 	this.setState({
 		productos: produs
 	})	
+}
+
+ordenadoPor = (num) => {
+	var pagCopy = this.state.paginacion
+	pagCopy.ordenadoPor = num;
+	this.setState({
+		paginacion: pagCopy
+	})
 }
 
 obtenerUsuario = async () => {
@@ -76,8 +103,7 @@ obtenerUsuario = async () => {
 			})
 		})
 }
-
-
+// console.log(this.state.ordenadoPor)
 
 
   render() {
@@ -89,6 +115,7 @@ obtenerUsuario = async () => {
 			<MainBar
 				paginacion = {this.state.paginacion}
 				obtenerProductos = {this.obtenerProductos}
+				ordenadoPor = {this.ordenadoPor}
 			/>
 			<Articles 
 				productos = {this.state.productos}

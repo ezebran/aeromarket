@@ -25,6 +25,12 @@ const MainBar = (props) => {
 			props.obtenerProductos(pagEnBar);			
 		}
 	}
+	
+	const ordenarPorMenorPrecio = (e) => {
+		e.preventDefault();
+
+		props.ordenadoPor(2);
+	}
 	return(
 		<div>
 			<div className="m-bar">
@@ -42,16 +48,16 @@ const MainBar = (props) => {
 					<ul>
 						<li className="p-sort">Sort by:</li>
 
-						<a href="#">
-							<li className="btn btn-active">Most recent</li>
+						<a href="#" >
+							<li className="btn btn-active" id="reciente">Most recent</li>
+						</a>
+
+						<a href="#" onClick={ordenarPorMenorPrecio} >
+							<li className="btn btn-light" id="porMenor">Lowest price</li>
 						</a>
 
 						<a href="#">
-							<li className="btn btn-light">Lowest price</li>
-						</a>
-
-						<a href="#">
-							<li className="btn btn-light">Highest price</li>
+							<li className="btn btn-light" id="porMayor">Highest price</li>
 						</a>
 					</ul>
 
