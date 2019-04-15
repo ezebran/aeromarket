@@ -3,6 +3,29 @@ import React, { Component } from 'react';
 const FootBar = (props) => {
 	let objSize = props.paginacion.cantidadProdus;
 	let artPosicion = props.paginacion.productosPorPag * props.paginacion.pagActual;
+	var pagActual =  props.paginacion.pagActual;
+
+	const paginacionBarMas = (e) => {
+		e.preventDefault();
+
+
+		if(objSize != artPosicion){
+			var pagEnBar = pagActual + 1;
+
+			props.obtenerProductos(pagEnBar);		
+		}
+	}
+
+	const paginacionBarMenos = (e) => {
+		e.preventDefault();
+
+
+		if(pagActual != 1){
+			var pagEnBar = pagActual - 1;
+
+			props.obtenerProductos(pagEnBar);			
+		}
+	}
 	return(
 		<div>
 			<div className="m-bar">
@@ -17,9 +40,14 @@ const FootBar = (props) => {
 
 
 				</div>
-				<a href="#" className="arrow-cont">
-					<span className="icon-keyboard_arrow_right arrow-icon"></span>
-				</a>
+				<div class="arrows-cont">
+					<a href="#" className="arrow-cont" onClick={paginacionBarMenos}>
+						<span className="icon-keyboard_arrow_left arrow-icon"></span>
+					</a>
+					<a href="#" className="arrow-cont" onClick={paginacionBarMas}>
+						<span className="icon-keyboard_arrow_right arrow-icon"></span>
+					</a>
+				</div>
 			</div>
 
 			<hr className="gray-line gl-foot" />

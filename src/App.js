@@ -61,7 +61,6 @@ obtenerProductos = async (pagBar) => {
 	this.setState({
 		productos: produs
 	})	
-	// console.log(pagEnMbar)
 }
 
 obtenerUsuario = async () => {
@@ -96,6 +95,7 @@ obtenerUsuario = async () => {
 			/>
 			<FootBar
 				paginacion = {this.state.paginacion}
+				obtenerProductos = {this.obtenerProductos}
 			/>
 		</div>
     );
