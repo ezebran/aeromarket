@@ -30,6 +30,7 @@ const MainBar = (props) => {
 		e.preventDefault();
 
 		props.ordenadoPor(2);
+		props.obtenerProductos();
 	}
 	return(
 		<div>
