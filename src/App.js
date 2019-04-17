@@ -29,6 +29,7 @@ componentDidMount() {
 
 obtenerProductos = async (pagBar) => {
 	let url = `https://aerolab-challenge.now.sh/products/?token=${this.token}`;
+
 	const artPorPag = this.state.paginacion.productosPorPag;
 	await fetch(url)
 		.then(respuesta => {
@@ -36,6 +37,7 @@ obtenerProductos = async (pagBar) => {
 		})
 		.then(productos => {
 			var pagEnMbar;
+
 			if(pagBar == undefined){
 				pagEnMbar = this.state.paginacion.pagActual;
 			}else{
@@ -44,11 +46,12 @@ obtenerProductos = async (pagBar) => {
 			var paginacionCopy = this.state.paginacion
 			paginacionCopy.cantidadProdus = productos.length
 			paginacionCopy.pagActual = pagEnMbar
-			console.log(this.state.paginacion.pagActual)
+
 			this.setState({
 				paginacion: paginacionCopy,
 				productos: productos				
-			})			
+			})
+						
 		})
 
 
@@ -56,27 +59,66 @@ obtenerProductos = async (pagBar) => {
 	let desde = hasta - artPorPag;
 	var produs = [];
 
-	for(let i = 0;i < artPorPag;i++){
-		produs.push(this.state.productos[desde]);
-		desde++;
-	}
+	let produsSinOrdenar = this.state.productos;
+	let botonMenor = document.getElementById('porMenor');
+	let botonMayor = document.getElementById('porMayor');
+	let botonReciente = document.getElementById('reciente');
 
 	if(this.state.paginacion.ordenadoPor == 2){
-
-		produs.sort(function (prev, next){
+		var produsXmenor = produsSinOrdenar.sort(function (prev, next){
 			return prev.cost - next.cost;
 		})
-		let botonMenor = document.getElementById('porMenor');
+		this.setState({
+			productos: produsXmenor
+		})
+
 		botonMenor.classList.remove("btn-light");
 		botonMenor.classList.add("btn-active");
 
-		let botonMayor = document.getElementById('porMayor');
 		botonMayor.classList.remove("btn-active");
 		botonMayor.classList.add("btn-light");
 
-		let botonReciente = document.getElementById('reciente');
 		botonReciente.classList.remove("btn-active");
 		botonReciente.classList.add("btn-light");
+
+	} else if(this.state.paginacion.ordenadoPor == 3){
+
+		var produsXmayor = produsSinOrdenar.sort(function (prev, next){
+			return next.cost - prev.cost;
+		})
+		this.setState({
+			productos: produsXmayor
+		})
+
+		botonMenor.classList.remove("btn-active");
+		botonMenor.classList.add("btn-light");
+
+		botonMayor.classList.remove("btn-light");
+		botonMayor.classList.add("btn-active");
+
+		botonReciente.classList.remove("btn-active");
+		botonReciente.classList.add("btn-light");
+	}else{
+		var produsRecientes = produsSinOrdenar.sort(function (prev, next){
+			return prev._id - next._id;
+		})
+		this.setState({
+			productos: produsRecientes
+		})
+
+		botonMenor.classList.remove("btn-active");
+		botonMenor.classList.add("btn-light");
+
+		botonMayor.classList.remove("btn-active");
+		botonMayor.classList.add("btn-light");
+
+		botonReciente.classList.remove("btn-light");
+		botonReciente.classList.add("btn-active");
+	}
+
+	for(let i = 0;i < artPorPag;i++){
+		produs.push(this.state.productos[desde]);
+		desde++;
 	}
 
 	this.setState({

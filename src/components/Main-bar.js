@@ -26,12 +26,27 @@ const MainBar = (props) => {
 		}
 	}
 	
+	const ordenarPorReciente = (e) => {
+		e.preventDefault();
+
+		props.ordenadoPor(1);
+		props.obtenerProductos();
+	}
+	
 	const ordenarPorMenorPrecio = (e) => {
 		e.preventDefault();
 
 		props.ordenadoPor(2);
 		props.obtenerProductos();
 	}
+
+	const ordenarPorMayorPrecio = (e) => {
+		e.preventDefault();
+
+		props.ordenadoPor(3);
+		props.obtenerProductos();
+	}
+	
 	return(
 		<div>
 			<div className="m-bar">
@@ -49,7 +64,7 @@ const MainBar = (props) => {
 					<ul>
 						<li className="p-sort">Sort by:</li>
 
-						<a href="#" >
+						<a href="#" onClick={ordenarPorReciente} >
 							<li className="btn btn-active" id="reciente">Most recent</li>
 						</a>
 
@@ -57,7 +72,7 @@ const MainBar = (props) => {
 							<li className="btn btn-light" id="porMenor">Lowest price</li>
 						</a>
 
-						<a href="#">
+						<a href="#" onClick={ordenarPorMayorPrecio} >
 							<li className="btn btn-light" id="porMayor">Highest price</li>
 						</a>
 					</ul>
