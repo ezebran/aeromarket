@@ -166,6 +166,7 @@ obtenerUsuario = async () => {
 			/>
 			<Articles 
 				productos = {this.state.productos}
+				usuarios = {this.state.usuarios}
 			/>
 			<FootBar
 				paginacion = {this.state.paginacion}

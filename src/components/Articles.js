@@ -11,6 +11,7 @@ class Articles extends Component {
 							{ Object.keys(this.props.productos).map(key => (
 								<Article
 									infoProductos = {this.props.productos[key]}
+									infoUsuarios = {this.props.usuarios}
 								/>
 							))}
 						
