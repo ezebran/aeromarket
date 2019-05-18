@@ -6,6 +6,106 @@ body{
 	background: $white-bg;
 }
 
+.modal{
+    position: absolute;
+    z-index: 9999;
+    background: rgba(30,30,30,0.4);
+    height: 100vh;
+    width: 100%;
+    display: none;
+    // @include row-ct;
+    form{
+	    background: $white-bg;
+		box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.10);
+		// @include col-ct;
+		padding: 1.5em 2em;
+		position: relative;
+	    border-radius: 3px;
+	    max-height: 75%;
+	    overflow: auto;
+		.m-close{
+			position: absolute;
+		    top: 5px;
+		    right: 5px;
+		    background: #F44336;
+		    color: white;
+		    border-radius: 100%;
+		    padding: 0.5rem 0.65rem;
+		}
+		.m-title{
+			color:$black2;
+			font-weight: 600;
+			width: 100%;
+			text-align: center;
+		}
+		.m-products-list{
+		    overflow: auto;
+		    height: 24.5em;
+		}
+		.m-product{
+			@include row-bt;
+			margin: 1.5rem;
+			img{
+				width: 14em;
+			}
+			.pb-price{
+				font-size: 1rem;
+				@include row-ct;
+				img{
+					width: 1.5rem;
+				}
+			}
+			.m-info-product{
+				margin-left: 2.5rem;
+				.m-p-name{
+					font-size: 1.125rem;
+				    font-weight: 400;
+				    color:$black2;
+				}
+				h5{
+					color:$black;
+				}
+				.m-calc{
+					background: $white;
+					padding: 0.75rem;
+				    margin-top: 0.5rem;
+					h4{
+						color:$black2;
+						span{
+							color:$gray;
+						    font-weight: 400;
+						    font-style: italic;
+						    font-size: 0.75rem;
+						}
+					}
+					.m-gray-line{
+						border:1px solid $black;
+					    border-top: none;
+					}
+				}
+			}
+		}
+		.bor-bot{
+			border-bottom: 1px solid $gray2;
+		    padding-bottom: 1.25rem;
+		    &:last-child{
+		    	border-bottom: none;
+		    	padding-bottom: 0;
+		    }
+		}
+    }
+}
+
+.show-modal{
+	@include row-ct;
+}
+
+.carrito-btn{
+	img{
+		width: 3em;
+	}
+}
+
 header{
 	@include col-ct;
 	width: 100%;
@@ -20,7 +120,7 @@ header{
 		box-shadow:2px 2px 4px 0 rgba(0,0,0,0.10);
 		.user-nav{
 			@include row-bt;
-			width: 14rem;
+			width: 19rem;
 			h2{
 				font-weight: 400;
 				color:$black;
@@ -30,6 +130,52 @@ header{
 					font-weight:400;
 					color:$black;
 				}
+			}
+			.buy-tooltip{
+				position: relative;
+				.carrito-btn{
+					img{
+						width: 3em;
+					}
+				}
+				.carrito-tooltip{
+					position: absolute;
+				    left: -11em;
+				    display: none;
+				    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.1);
+				    background: #fff;
+				    padding: 1em;
+				    transition: all .3s ease-out;
+				    height: 24em;
+    				overflow: auto;
+				    width: 25em;
+				    p{
+				    	color:$black;
+				    }
+				    .product-buy{
+				    	@include row-ar;
+				    	width: 100%;
+				        margin: 1em 0;
+						h5{
+							color:$gray;
+							font-weight: 400;
+						}
+						h4{
+							color:$black;
+							font-weight: 400;
+						}
+						.pb-image{
+						    width: 10em;
+						}
+						.pb-price{
+							font-size: 1rem;
+							@include row-ct;
+						}
+				    }
+				}
+				.show-cart{
+					display: inherit;
+				}				
 			}
 		}
 	}
@@ -47,6 +193,10 @@ header{
 	    	margin-bottom: 2rem;
 	    }
 	}
+}
+
+.show-cart{
+	display: none;
 }
 
 .m-bar{

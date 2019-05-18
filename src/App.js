@@ -3,6 +3,7 @@ import Header from './components/Header';
 import MainBar from './components/Main-bar';
 import Articles from './components/Articles';
 import FootBar from './components/Foot-bar';
+import Redeem from './components/ModalsContent/Redeem';
 
 class App extends Component {
 
@@ -150,14 +151,16 @@ obtenerUsuario = async () => {
 			})
 		})
 }
-// console.log(this.state.ordenadoPor)
 
+// toggleCart = e => this.setState({ showCart: !this.state.showCart });
 
   render() {
     return (
     	<div>
+    		<Redeem />
 			<Header 
 				usuarios = {this.state.usuarios}
+				toggleCart = {this.toggleCart}
 			/>
 			<MainBar
 				paginacion = {this.state.paginacion}

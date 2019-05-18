@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-// import ArticlePay from './article/ArticlePay';
-// import ArticleNeed from './article/ArticleNeed';
 
 const Article = (props) => {
+
+
 
 	if(props.infoProductos.cost > props.infoUsuarios.points){
 		return(
@@ -17,7 +17,7 @@ const Article = (props) => {
 					</picture>
 
 					<hr class="gray-line" />
-					
+
 					<h5>{props.infoProductos.category}</h5>
 					<h4>{props.infoProductos.name}</h4>
 				</article>
@@ -29,14 +29,14 @@ const Article = (props) => {
 				<article>
 					<div className="buy-icon">
 						<img src="assets/images/icons/buy-blue.svg" />
-					</div>
+				</div>
 					<picture>
 						<source srcSet={props.infoProductos.img.hdUrl} media="(min-width: 600px)" />
 						<img src={props.infoProductos.img.url} />
 					</picture>
 
 					<hr className="gray-line" />
-					
+
 					<h5>{props.infoProductos.category}</h5>
 					<h4>{props.infoProductos.name}</h4>
 					<div className="info-hover">
@@ -49,9 +49,9 @@ const Article = (props) => {
 						</div>
 						<a href="#" className="redeem">Redeem now</a>
 					</div>
-				</article>
-			</a>
-		)
+			</article>
+		</a>
+	)
 	}
 }
 

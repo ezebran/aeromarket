@@ -6,16 +6,12 @@ class Articles extends Component {
 		return(
 			<section className="main">
 				<div className="articles">
-					
-						
-							{ Object.keys(this.props.productos).map(key => (
-								<Article
-									infoProductos = {this.props.productos[key]}
-									infoUsuarios = {this.props.usuarios}
-								/>
-							))}
-						
-					
+					{ Object.keys(this.props.productos).map(key => (
+						<Article
+							infoProductos = {this.props.productos[key]}
+							infoUsuarios = {this.props.usuarios}
+						/>
+					))}
 				</div>
 			</section>
 		)
