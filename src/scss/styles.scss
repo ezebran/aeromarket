@@ -7,7 +7,7 @@ body{
 }
 
 .modal{
-    position: absolute;
+    position: fixed;
     z-index: 9999;
     background: rgba(30,30,30,0.4);
     height: 100vh;
@@ -23,6 +23,9 @@ body{
 	    border-radius: 3px;
 	    max-height: 75%;
 	    overflow: auto;
+	    transition: all 0.2s cubic-bezier(0.4, 0, 1, 1);
+	    opacity: 0.1;
+	    margin-top: 3rem;
 		.m-close{
 			position: absolute;
 		    top: 5px;
@@ -94,12 +97,22 @@ body{
 		    }
 		}
     }
+	.form-e{
+		transition: all 0.2s cubic-bezier(0.4, 0, 1, 1);
+	    opacity:1;
+	    margin-top: 0;
+	}
 }
 
 .show-modal{
 	@include row-ct;
 }
 
+
+
+.m-auto{
+	margin:auto;
+}
 .carrito-btn{
 	img{
 		width: 3em;
@@ -133,11 +146,7 @@ header{
 			}
 			.buy-tooltip{
 				position: relative;
-				.carrito-btn{
-					img{
-						width: 3em;
-					}
-				}
+
 				.carrito-tooltip{
 					position: absolute;
 				    left: -11em;

@@ -4,6 +4,7 @@ import MainBar from './components/Main-bar';
 import Articles from './components/Articles';
 import FootBar from './components/Foot-bar';
 import Redeem from './components/ModalsContent/Redeem';
+import Purchases from './components/ModalsContent/Purchases';
 
 class App extends Component {
 
@@ -17,7 +18,9 @@ state = {
 		productosPorPag: 16,
 		cantidadProdus: 0,
 		ordenadoPor: 1
-	}
+	},
+	redeemContent: {},
+	redeemImgs: {}
 }
 //1 = reciente, 2 = porMenor, 3 = porMayor
 componentDidMount() {
@@ -152,12 +155,24 @@ obtenerUsuario = async () => {
 		})
 }
 
+renderRedeem = (produ) => {
+		this.setState({
+			redeemContent: produ,
+			redeemImgs: produ.img
+		})
+}
+
 // toggleCart = e => this.setState({ showCart: !this.state.showCart });
 
   render() {
     return (
     	<div>
-    		<Redeem />
+    		<Redeem
+    			redeemContent = {this.state.redeemContent}
+    			redeemImgs = {this.state.redeemImgs}
+    			userPoints = {this.state.usuarios.points}
+    		/>
+    		<Purchases />
 			<Header 
 				usuarios = {this.state.usuarios}
 				toggleCart = {this.toggleCart}
@@ -170,6 +185,7 @@ obtenerUsuario = async () => {
 			<Articles 
 				productos = {this.state.productos}
 				usuarios = {this.state.usuarios}
+				renderRedeem = {this.renderRedeem}
 			/>
 			<FootBar
 				paginacion = {this.state.paginacion}

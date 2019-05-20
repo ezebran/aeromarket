@@ -10,6 +10,7 @@ class Articles extends Component {
 						<Article
 							infoProductos = {this.props.productos[key]}
 							infoUsuarios = {this.props.usuarios}
+							renderRedeem = {this.props.renderRedeem}
 						/>
 					))}
 				</div>

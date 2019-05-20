@@ -2,6 +2,23 @@ import React, { Component } from 'react';
 
 const Article = (props) => {
 
+	const toggleCartf = (e) => {
+		e.preventDefault();
+
+		let carrito = document.getElementById('redeemModal');
+		carrito.classList.toggle("show-modal");
+
+		let modalContent = document.getElementById('modal-content-r');
+
+		modalContent.classList.toggle("form-e");
+
+		// setState({
+		// 	redeemContent: props.infoProductos
+		// })
+		const product = props.infoProductos;
+		props.renderRedeem(product)
+	}
+
 
 
 	if(props.infoProductos.cost > props.infoUsuarios.points){
@@ -47,7 +64,7 @@ const Article = (props) => {
 							<h3>{props.infoProductos.cost}</h3>
 							<img src="assets/images/icons/coin.svg" />
 						</div>
-						<a href="#" className="redeem">Redeem now</a>
+						<a href="#" className="redeem" onClick={toggleCartf}>Redeem now</a>
 					</div>
 			</article>
 		</a>
