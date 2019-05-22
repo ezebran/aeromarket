@@ -12,9 +12,7 @@ const Article = (props) => {
 
 		modalContent.classList.toggle("form-e");
 
-		// setState({
-		// 	redeemContent: props.infoProductos
-		// })
+
 		const product = props.infoProductos;
 		props.renderRedeem(product)
 	}

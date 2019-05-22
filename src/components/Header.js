@@ -15,7 +15,7 @@ const Header = (props) => {
 						toggleCart = {props.toggleCart}
 						
 					/>			
-					<h2 id="name">{props.usuarios.name}</h2>
+					<h2 id="name" class="user-name">{props.usuarios.name}</h2>
 					<div className="btn btn-light">
 						<h2>{props.usuarios.points}</h2>
 						<img src="assets/images/icons/coin.svg" />

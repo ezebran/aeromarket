@@ -47,6 +47,21 @@ const MainBar = (props) => {
 		props.obtenerProductos();
 	}
 	
+	const ordenarProductos = (e) => {
+		e.preventDefault();
+
+		let orden = e.target.value;
+
+		if(orden == "reciente"){
+			props.ordenadoPor(1);
+		}else if(orden == "porMenor"){
+			props.ordenadoPor(2);
+		}else{
+			props.ordenadoPor(3);
+		}
+
+		props.obtenerProductos();
+	}
 	return(
 		<div>
 			<div className="m-bar">
@@ -54,27 +69,26 @@ const MainBar = (props) => {
 				<div className="m-bar-content">
 					<h2 className="n-products">
 						{artPosicion} of {objSize} products
-						<a href="#" className="arrow-cont arrow-resp">
-							<span className="icon-keyboard_arrow_right arrow-icon"></span>
-						</a>
+				<div class="arrows-cont">
+					<a href="#" className="arrow-cont arrow-resp" onClick={paginacionBarMenos}>
+						<span className="icon-keyboard_arrow_left arrow-icon"></span>
+					</a>
+					<a href="#" className="arrow-cont arrow-resp" onClick={paginacionBarMas}>
+						<span className="icon-keyboard_arrow_right arrow-icon"></span>
+					</a>
+				</div>
 					</h2>
 
 					<hr />
 
 					<ul>
 						<li className="p-sort">Sort by:</li>
+						<select id="sort" onChange={ordenarProductos}>
+							<option value="reciente" id="reciente">Most recent</option>
+							<option value="porMenor" id="porMenor">Lowest price</option>
+							<option value="porMayor" id="porMayor">Highest price</option>
+						</select>
 
-						<a href="#" onClick={ordenarPorReciente} >
-							<li className="btn btn-active" id="reciente">Most recent</li>
-						</a>
-
-						<a href="#" onClick={ordenarPorMenorPrecio} >
-							<li className="btn btn-light" id="porMenor">Lowest price</li>
-						</a>
-
-						<a href="#" onClick={ordenarPorMayorPrecio} >
-							<li className="btn btn-light" id="porMayor">Highest price</li>
-						</a>
 					</ul>
 
 				</div>

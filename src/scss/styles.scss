@@ -234,6 +234,12 @@ header{
 			.p-sort{
 				color:$gray;					
 			}
+			#sort{
+				outline: none;
+			    padding: 0.5rem 1rem;
+			    border-radius: 100px;
+			    color: #616161;				
+			}
 		}
 	}
 }
